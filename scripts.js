@@ -1,6 +1,48 @@
-function hello() {
-    alert("Hello");
-}
+const keyCodes = {
+    48: '0',
+    49: '1',
+    50: '2',
+    51: '3',
+    52: '4',
+    53: '5',
+    54: '6',
+    55: '7',
+    56: '8',
+    57: '9',
+    58: ':',
+    59: ':',
+    60: '<',
+    61: '=',
+    62: '$',
+    63: 'ß',
+    64: '@',
+    65: 'a',
+    66: 'b',
+    67: 'c',
+    68: 'd',
+    69: 'e',
+    70: 'f',
+    71: 'g',
+    72: 'h',
+    73: 'i',
+    74: 'j',
+    75: 'k',
+    76: 'l',
+    77: 'm',
+    78: 'n',
+    79: 'o',
+    80: 'p',
+    81: 'q',
+    82: 'r',
+    83: 's',
+    84: 't',
+    85: 'u',
+    86: 'v',
+    87: 'w',
+    88: 'x',
+    89: 'y',
+    90: 'z',
+};
 
 function keyLogger() {
     document.addEventListener("keydown", function (event) {
@@ -21,26 +63,15 @@ function randomNumber(min, max) {
     return Math.random() * (max - min) + min;
 }
 
-function parseKeyCode() {
-    
-}
-
 function scrambler() {
     var el = document.getElementById('textbar')
     el.addEventListener('keydown', function (event) {
         console.log(event)
-        if (event.keyCode) {
-            var keyPressed = event.keyCode;
-            var randomKeyCode = parseInt(randomNumber(8, 222))
-            var newRandom = parseInt(randomNumber(8, 222))
-
-            var ev = new Event('keypress');
-            el.value = el.value + 'a';
-            el.dispatchEvent(ev);
-
-            if (randomKeyCode == event.keyCode) {
-                randomKeyCode = newRandom
-            }
+        if (event.keyCode >= 48 && event.keyCode <= 90) {
+            event.preventDefault()
+            var randomKeyCode = parseInt(randomNumber(48, 90))
+            var newKey = keyCodes[randomKeyCode]
+            el.value = el.value + newKey;
         }
     })
 }
