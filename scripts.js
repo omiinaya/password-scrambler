@@ -74,15 +74,6 @@ function scramble(a) {
     return newKey;
 }
 
-function test() {
-    console.log(document.getElementById('scrambledtext').text)
-}
-
-function blackBall() {
-    document.getElementById("test1").color = "black"
-}
-
 document.addEventListener("DOMContentLoaded", function (event) {
-    keyLogger()
     scrambler()
 });
