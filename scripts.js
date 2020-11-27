@@ -72,15 +72,13 @@ function scrambler() {
             el.innerHTML = '' + newKey;
             count++;
         } else {
-            if (count < 25) {
-                console.log(event)
-                if (event.keyCode >= 48 && event.keyCode <= 90) {
-                    var newKey = scramble(event)
-                    el.innerHTML = el.innerHTML + newKey;
-                    count++;
-                }
+            if (count < 25 && event.keyCode >= 48 && event.keyCode <= 90) {
+                var newKey = scramble(event)
+                el.innerHTML = el.innerHTML + newKey;
+                count++;
             }
         }
+        console.log(event)
     })
 }
 
