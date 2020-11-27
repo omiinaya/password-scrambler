@@ -64,16 +64,36 @@ function randomNumber(min, max) {
 }
 
 function scrambler() {
-    var el = document.getElementById('textbar')
-    el.addEventListener('keydown', function (event) {
-        console.log(event)
-        if (event.keyCode >= 48 && event.keyCode <= 90) {
-            event.preventDefault()
-            var randomKeyCode = parseInt(randomNumber(48, 90))
-            var newKey = keyCodes[randomKeyCode]
-            el.value = el.value + newKey;
+    var count = 0;
+    var el = document.getElementById('scrambledtext')
+    document.addEventListener('keydown', function (event) {
+        if (count == 0) {
+            var newKey = scramble(event)
+            el.innerHTML = '' + newKey;
+            count++;
+        } else {
+            if (count < 25) {
+                console.log(event)
+                if (event.keyCode >= 48 && event.keyCode <= 90) {
+                    var newKey = scramble(event)
+                    el.innerHTML = el.innerHTML + newKey;
+                    count++;
+                }
+            }
         }
     })
+}
+
+function scramble(a) {
+    var event = a;
+    event.preventDefault()
+    var randomKeyCode = parseInt(randomNumber(48, 90))
+    var newKey = keyCodes[randomKeyCode]
+    return newKey;
+}
+
+function test() {
+    console.log(document.getElementById('scrambledtext').text)
 }
 
 /*
